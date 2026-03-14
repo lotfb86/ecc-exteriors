@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { CTASection } from './CTASection'
 import { TestimonialCarousel } from './TestimonialCarousel'
 
@@ -14,9 +15,12 @@ export function ServicePage({ title, subtitle, heroImage, children }: ServicePag
     <>
       {/* Hero */}
       <section className="relative h-[50vh] min-h-[400px] flex items-end overflow-hidden">
-        <img
+        <Image
           src={heroImage}
-          alt={title}
+          alt={`${title} service — commercial exterior renovation by ECC Exteriors`}
+          width={1920}
+          height={1080}
+          priority
           className="absolute inset-0 w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-navy-dark/90 via-navy/50 to-transparent" />

@@ -1,4 +1,5 @@
 import { Metadata } from 'next'
+import Image from 'next/image'
 import { ServicePage } from '@/components/ServicePage'
 import { createMetadata } from '@/lib/metadata'
 import { serviceSchema } from '@/lib/schema'
@@ -56,6 +57,20 @@ export default function DeckCoatingsPage() {
             Contact us today, and let us explore the advantages of epoxy floor coatings while
             providing color and pattern solutions tailored to your preferences.
           </p>
+        </div>
+
+        <div className="mt-16 grid grid-cols-2 sm:grid-cols-3 gap-4">
+          {['s11', 's13', 'm10'].map((img) => (
+            <Image
+              key={img}
+              src={`/images/projects/${img}.jpg`}
+              alt="Commercial deck coating and waterproofing project by ECC Exteriors"
+              width={400}
+              height={400}
+              className="rounded-lg aspect-square object-cover"
+              loading="lazy"
+            />
+          ))}
         </div>
       </ServicePage>
     </>

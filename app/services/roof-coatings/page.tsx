@@ -1,4 +1,5 @@
 import { Metadata } from 'next'
+import Image from 'next/image'
 import { ServicePage } from '@/components/ServicePage'
 import { createMetadata } from '@/lib/metadata'
 import { serviceSchema } from '@/lib/schema'
@@ -76,6 +77,20 @@ export default function RoofCoatingsPage() {
             flat roofs in apartments, shopping centers, hotels, and other commercial buildings.
             Contact us to learn how roof coatings can save you money while protecting your property.
           </p>
+        </div>
+
+        <div className="mt-16 grid grid-cols-2 sm:grid-cols-3 gap-4">
+          {['m4', 's15', 's17'].map((img) => (
+            <Image
+              key={img}
+              src={`/images/projects/${img}.jpg`}
+              alt="Flat roof coating application on a commercial property by ECC Exteriors"
+              width={400}
+              height={400}
+              className="rounded-lg aspect-square object-cover"
+              loading="lazy"
+            />
+          ))}
         </div>
       </ServicePage>
     </>

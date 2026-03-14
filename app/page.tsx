@@ -5,37 +5,37 @@ import { VideoEmbed } from '@/components/VideoEmbed'
 import { TestimonialCarousel } from '@/components/TestimonialCarousel'
 import { PartnerLogoScroll } from '@/components/PartnerLogoScroll'
 import { CTASection } from '@/components/CTASection'
-import { organizationSchema } from '@/lib/schema'
+import { organizationSchema, reviewSchema } from '@/lib/schema'
 
 const services = [
   {
     name: 'Exterior Painting',
     href: '/services/painting',
-    description: 'Professional exterior painting with a 5-year warranty. 30+ years of experience serving multi-family and commercial properties.',
+    description: 'Thirty years of expertise. Rigorous preparation, meticulous execution, and a 5-year warranty on every multi-family and commercial project.',
     image: '/images/projects/m1.jpg',
   },
   {
     name: 'Roof Replacement',
     href: '/services/roof-replacement',
-    description: 'Complete roof replacement and storm damage repair, including insurance claim navigation.',
+    description: 'Full roof and gutter replacement for capital improvements, plus storm damage repair with complete insurance claim navigation.',
     image: '/images/projects/m2.jpg',
   },
   {
-    name: 'Roof Coatings',
+    name: 'Flat Roof Coatings',
     href: '/services/roof-coatings',
-    description: 'Cost-effective silicone and acrylic flat roof coatings for apartments, hotels, and commercial buildings.',
+    description: 'Silicone and acrylic coating systems that extend roof life, reduce energy costs, and eliminate leaks — at a fraction of replacement cost.',
     image: '/images/projects/m4.jpg',
   },
   {
     name: 'Siding',
     href: '/services/siding',
-    description: 'Fiber cement siding installation with weather barrier systems and meticulous flashing details.',
+    description: 'Fiber cement siding installation with full weather barrier systems, precision flashing, and ice-and-water shielding at every opening.',
     image: '/images/projects/m5.jpg',
   },
   {
     name: 'Deck Coatings',
     href: '/services/deck-coatings',
-    description: 'Durable waterproofing systems for decks, breezeways, landings, and pool areas.',
+    description: 'High-performance waterproofing for breezeways, landings, pool decks, and common areas — enhancing safety and curb appeal.',
     image: '/images/projects/m6.jpg',
   },
 ]
@@ -49,19 +49,19 @@ const caseStudies = [
   {
     name: 'Skye Belltown',
     location: 'Seattle, WA',
-    description: 'Iconic Seattle property visible citywide. Painted twice for value-add and rebranding initiatives.',
+    description: 'A landmark Seattle high-rise visible across the entire skyline — painted twice by ECC for successive value-add repositioning and full rebranding campaigns.',
     image: '/images/projects/s3.jpg',
   },
   {
     name: 'The Marks Cherry Hills',
     location: 'Denver, CO',
-    description: 'Comprehensive rebranding: complete re-roofing, siding replacement, new decking, and exterior repaint.',
+    description: 'A head-to-toe transformation — complete re-roofing, full siding replacement, new deck coatings, and a striking exterior repaint that redefined the community.',
     image: '/images/projects/s7.jpg',
   },
   {
     name: 'The Felix',
     location: 'Project Recap',
-    description: '2022 completion using Uniflex S44 silicone coating system as a cost-effective roofing solution.',
+    description: 'Completed in 2022, this property received a full Uniflex S44 silicone coating system — extending roof life by 15+ years at a fraction of tear-off cost.',
     image: '/images/projects/s9.jpg',
   },
 ]
@@ -72,6 +72,10 @@ export default function HomePage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema()) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(reviewSchema()) }}
       />
 
       {/* Hero — Video Background */}
@@ -134,10 +138,10 @@ export default function HomePage() {
       </section>
 
       {/* Services Grid */}
-      <section className="section-padding">
+      <section id="services" className="section-padding" aria-labelledby="services-heading">
         <div className="container-wide">
           <div className="text-center mb-12">
-            <h2 className="font-heading text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+            <h2 id="services-heading" className="font-heading text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
               Our Services
             </h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
@@ -151,10 +155,12 @@ export default function HomePage() {
                 href={service.href}
                 className="group relative rounded-xl overflow-hidden bg-white border border-gray-100 hover:shadow-xl transition-all duration-300"
               >
-                <div className="aspect-[4/3] overflow-hidden">
-                  <img
+                <div className="aspect-[4/3] overflow-hidden relative">
+                  <Image
                     src={service.image}
-                    alt={service.name}
+                    alt={`${service.name} — commercial exterior renovation by ECC Exteriors`}
+                    width={600}
+                    height={450}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     loading="lazy"
                   />
@@ -166,9 +172,9 @@ export default function HomePage() {
                   <p className="text-sm text-gray-600 leading-relaxed">
                     {service.description}
                   </p>
-                  <span className="mt-4 inline-flex items-center text-sm font-semibold text-copper group-hover:text-copper-dark transition-colors">
+                  <span className="mt-4 inline-flex items-center text-sm font-semibold text-copper-dark group-hover:text-navy transition-colors">
                     Learn More
-                    <svg className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                     </svg>
                   </span>
@@ -180,10 +186,10 @@ export default function HomePage() {
       </section>
 
       {/* Featured Case Studies */}
-      <section className="section-padding bg-gray-50">
+      <section className="section-padding bg-gray-50" aria-labelledby="projects-heading">
         <div className="container-wide">
           <div className="text-center mb-12">
-            <h2 className="font-heading text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+            <h2 id="projects-heading" className="font-heading text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
               Featured Projects
             </h2>
             <p className="text-gray-600">
@@ -196,10 +202,12 @@ export default function HomePage() {
                 key={project.name}
                 className="rounded-xl overflow-hidden bg-white shadow-sm hover:shadow-lg transition-shadow"
               >
-                <div className="aspect-[3/2] overflow-hidden">
-                  <img
+                <div className="aspect-[3/2] overflow-hidden relative">
+                  <Image
                     src={project.image}
-                    alt={project.name}
+                    alt={`${project.name} — ${project.location} exterior renovation by ECC Exteriors`}
+                    width={600}
+                    height={400}
                     className="w-full h-full object-cover"
                     loading="lazy"
                   />
@@ -224,7 +232,7 @@ export default function HomePage() {
               className="inline-flex items-center gap-2 text-navy font-semibold hover:text-navy-light transition-colors"
             >
               View All Projects
-              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
             </Link>
@@ -233,10 +241,10 @@ export default function HomePage() {
       </section>
 
       {/* Video Feature */}
-      <section className="section-padding">
+      <section className="section-padding" aria-labelledby="videos-heading">
         <div className="container-wide">
           <div className="text-center mb-12">
-            <h2 className="font-heading text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+            <h2 id="videos-heading" className="font-heading text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
               See Our Work in Action
             </h2>
           </div>
@@ -250,7 +258,7 @@ export default function HomePage() {
               className="inline-flex items-center gap-2 text-navy font-semibold hover:text-navy-light transition-colors"
             >
               Watch All Videos
-              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
             </Link>
@@ -265,10 +273,10 @@ export default function HomePage() {
       <PartnerLogoScroll />
 
       {/* Areas Served */}
-      <section className="section-padding">
+      <section className="section-padding" aria-labelledby="areas-heading">
         <div className="container-wide">
           <div className="text-center mb-12">
-            <h2 className="font-heading text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+            <h2 id="areas-heading" className="font-heading text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
               Areas We Serve
             </h2>
             <p className="text-gray-600">

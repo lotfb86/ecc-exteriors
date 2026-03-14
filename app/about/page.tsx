@@ -1,4 +1,5 @@
 import { Metadata } from 'next'
+import Image from 'next/image'
 import { StatCounter } from '@/components/StatCounter'
 import { PartnerLogoScroll } from '@/components/PartnerLogoScroll'
 import { CTASection } from '@/components/CTASection'
@@ -120,10 +121,12 @@ export default function AboutPage() {
           </h2>
           <div className="flex flex-wrap justify-center items-center gap-8 sm:gap-12">
             {manufacturers.map((m) => (
-              <img
+              <Image
                 key={m}
                 src={`/images/manufacturers/${m}.png`}
-                alt="Manufacturer partner"
+                alt={`${m.replace(/manulogo/, 'Manufacturer partner ')} logo — ECC Exteriors supplier`}
+                width={120}
+                height={48}
                 className="h-10 sm:h-12 w-auto grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all"
                 loading="lazy"
               />

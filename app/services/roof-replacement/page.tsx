@@ -1,4 +1,5 @@
 import { Metadata } from 'next'
+import Image from 'next/image'
 import { ServicePage } from '@/components/ServicePage'
 import { createMetadata } from '@/lib/metadata'
 import { serviceSchema } from '@/lib/schema'
@@ -65,6 +66,40 @@ export default function RoofReplacementPage() {
             and protecting the foundation. We identify and fix gutter issues as part of our
             comprehensive roof replacement services.
           </p>
+
+          <h2 className="font-heading text-2xl font-bold text-gray-900 mt-12 mb-4">
+            Our Process
+          </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-6 not-prose">
+            {[
+              { step: 1, title: 'Roof Inspection & Assessment', desc: 'A thorough inspection identifies storm damage, wear patterns, and structural concerns to determine the optimal replacement strategy.' },
+              { step: 2, title: 'Scope & Insurance Coordination', desc: 'We develop a detailed scope of work and, when applicable, coordinate directly with your insurance adjuster on storm damage claims.' },
+              { step: 3, title: 'Professional Installation', desc: 'Our certified crews remove the existing roof system and install new underlayment, shingles or TPO/EPDM, flashing, and gutters to manufacturer specifications.' },
+              { step: 4, title: 'Final Inspection & Warranty', desc: 'Every roof is inspected for quality before handoff. We provide manufacturer warranties and stand behind our workmanship.' },
+            ].map((item) => (
+              <div key={item.step} className="bg-gray-50 rounded-lg p-6">
+                <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-copper text-white font-bold text-sm mb-3">
+                  {item.step}
+                </span>
+                <h3 className="font-heading font-bold text-gray-900 mb-2">{item.title}</h3>
+                <p className="text-sm text-gray-600 leading-relaxed">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="mt-16 grid grid-cols-2 sm:grid-cols-4 gap-4">
+          {['m14', 'm16', 's12', 's13'].map((img) => (
+            <Image
+              key={img}
+              src={`/images/projects/${img}.jpg`}
+              alt="Commercial roof and gutter replacement project by ECC Exteriors"
+              width={400}
+              height={400}
+              className="rounded-lg aspect-square object-cover"
+              loading="lazy"
+            />
+          ))}
         </div>
       </ServicePage>
     </>

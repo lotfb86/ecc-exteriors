@@ -18,10 +18,13 @@ export function PartnerLogoScroll() {
       <div className="relative">
         <div className="flex animate-scroll gap-16 items-center">
           {[...partners, ...partners].map((name, i) => (
+            // eslint-disable-next-line @next/next/no-img-element
             <img
               key={`${name}-${i}`}
               src={`/images/partners/${name}.png`}
-              alt={name.replace(/-/g, ' ')}
+              alt={`${name.replace(/-/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase())} — ECC Exteriors partner`}
+              width={120}
+              height={40}
               className="h-8 sm:h-10 w-auto grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all flex-shrink-0"
               loading="lazy"
             />

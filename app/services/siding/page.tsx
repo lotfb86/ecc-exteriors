@@ -1,4 +1,5 @@
 import { Metadata } from 'next'
+import Image from 'next/image'
 import { ServicePage } from '@/components/ServicePage'
 import { createMetadata } from '@/lib/metadata'
 import { serviceSchema } from '@/lib/schema'
@@ -63,6 +64,20 @@ export default function SidingPage() {
             maintenance concerns, providing you with a look you&apos;ll adore and peace of mind
             for years to come.
           </p>
+        </div>
+
+        <div className="mt-16 grid grid-cols-2 sm:grid-cols-3 gap-4">
+          {['m18', 's19', 's20'].map((img) => (
+            <Image
+              key={img}
+              src={`/images/projects/${img}.jpg`}
+              alt="Commercial fiber cement siding installation by ECC Exteriors"
+              width={400}
+              height={400}
+              className="rounded-lg aspect-square object-cover"
+              loading="lazy"
+            />
+          ))}
         </div>
       </ServicePage>
     </>

@@ -1,5 +1,6 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
+import Image from 'next/image'
 import { createMetadata } from '@/lib/metadata'
 import { CTASection } from '@/components/CTASection'
 
@@ -57,7 +58,7 @@ export default function OurWorkPage() {
             className="mt-6 inline-flex items-center gap-2 text-copper-light hover:text-copper font-semibold transition-colors"
           >
             Watch Project Videos
-            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
           </Link>
@@ -77,9 +78,11 @@ export default function OurWorkPage() {
                 className={`flex flex-col ${i % 2 === 1 ? 'md:flex-row-reverse' : 'md:flex-row'} gap-8 items-center`}
               >
                 <div className="md:w-1/2">
-                  <img
+                  <Image
                     src={project.image}
-                    alt={project.name}
+                    alt={`${project.name} in ${project.location} — exterior renovation by ECC Exteriors`}
+                    width={800}
+                    height={600}
                     className="rounded-xl w-full aspect-[4/3] object-cover shadow-lg"
                     loading="lazy"
                   />
@@ -119,10 +122,12 @@ export default function OurWorkPage() {
           </h2>
           <div className="columns-2 md:columns-3 lg:columns-4 gap-4 space-y-4">
             {galleryImages.map((img) => (
-              <img
+              <Image
                 key={img}
                 src={`/images/projects/${img}.jpg`}
-                alt="ECC Exteriors project"
+                alt={`Commercial exterior renovation project by ECC Exteriors — photo ${img}`}
+                width={600}
+                height={600}
                 className="rounded-lg w-full break-inside-avoid"
                 loading="lazy"
               />

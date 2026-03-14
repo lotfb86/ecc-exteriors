@@ -1,5 +1,6 @@
 import { Metadata } from 'next'
 import { createMetadata } from '@/lib/metadata'
+import { organizationSchema } from '@/lib/schema'
 
 export const metadata: Metadata = createMetadata({
   title: 'Contact ECC Exteriors — Request a Free Estimate',
@@ -16,6 +17,10 @@ const areas = [
 export default function ContactPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema()) }}
+      />
       {/* Hero */}
       <section className="bg-navy py-16 sm:py-20">
         <div className="container-wide">
@@ -53,9 +58,12 @@ export default function ContactPage() {
                       id="name"
                       name="name"
                       required
+                      aria-required="true"
+                      aria-describedby="name-error"
                       className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-copper focus:border-copper transition-colors text-gray-900"
                       placeholder="Your name"
                     />
+                    <span id="name-error" className="sr-only" role="alert" />
                   </div>
                   <div>
                     <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
@@ -66,9 +74,12 @@ export default function ContactPage() {
                       id="email"
                       name="email"
                       required
+                      aria-required="true"
+                      aria-describedby="email-error"
                       className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-copper focus:border-copper transition-colors text-gray-900"
                       placeholder="you@company.com"
                     />
+                    <span id="email-error" className="sr-only" role="alert" />
                   </div>
                 </div>
 

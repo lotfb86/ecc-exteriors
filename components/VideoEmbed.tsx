@@ -18,9 +18,12 @@ export function VideoEmbed({ youtubeId, title }: VideoEmbedProps) {
         onClick={() => setLoaded(true)}
         aria-label={`Play video: ${title}`}
       >
+        {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={thumbnailUrl}
-          alt={title}
+          alt={`Video thumbnail for ${title} — ECC Exteriors`}
+          width={480}
+          height={360}
           className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity"
           loading="lazy"
         />
@@ -30,6 +33,7 @@ export function VideoEmbed({ youtubeId, title }: VideoEmbedProps) {
               className="w-7 h-7 sm:w-8 sm:h-8 text-white ml-1"
               fill="currentColor"
               viewBox="0 0 24 24"
+              aria-hidden="true"
             >
               <path d="M8 5v14l11-7z" />
             </svg>
